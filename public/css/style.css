@@ -14,7 +14,7 @@ h1{
 }
 .logo{
   height: auto;
-  .img-fluid. max-width: 100%
+   max-width: 100%
 }
 a:hover, a:active, a:focus {
   color: #51d8af;
@@ -186,6 +186,9 @@ h3{
   margin-bottom: 30px;
   font-size: 64px;
   font-weight: 700;
+}
+#intro .intro-content img{
+  width: 250px;
 }
 
 #intro .intro-content h2 span {
@@ -801,13 +804,16 @@ body.mobile-nav-active #mobile-nav-toggle {
 #services .box .icon {
   float: left;
 }
-
-#services .box .icon i {
+#services .box .icon i   {
   color: #444;
   font-size: 64px;
   transition: 0.5s;
   line-height: 0;
   margin-top: 34px;
+}
+#services .box .icon img{
+  width: 100%;
+  height: 90px;
 }
 
 #services .box .icon i:before {
@@ -835,7 +841,13 @@ body.mobile-nav-active #mobile-nav-toggle {
   margin-bottom: 0;
   line-height: 24px;
 }
-
+#services .box .boton {
+  margin-left: 100px;
+  font-weight: 700;
+  margin-bottom: 15px;
+  font-size: 22px;
+  width: auto;
+}
 @media (max-width: 767px) {
   #services .box .box {
     margin-bottom: 20px;
@@ -946,13 +958,35 @@ body.mobile-nav-active #mobile-nav-toggle {
   transform: translate(-50%, -50%);
 }
 
+/*
+  Eventos section
+*/
+
+#eventos .testimonial-item h5, #eventos .testimonial-item p{
+  text-align: justify;
+}
+#eventos .testimonial-item .fecha{
+  font-size: 15px;
+}
+
+#eventos .testimonial-item .contenido{
+  text-align: left;
+  font-size: 15px;
+}
+#eventos .testimonial-item .fecha p span{
+  color: #5272ca;
+}
+#eventos .owl-dot.active {
+  background-color: #50d8af;
+}
+
 /* Testimonials Section
 --------------------------------*/
-#testimonials {
+#testimonials, #eventos{
   padding: 30px 0;
 }
 
-#testimonials .testimonial-item {
+#testimonials .testimonial-item , #eventos .testimonial-item{
   box-sizing: content-box;
   padding: 30px 30px 0 30px;
   margin: 30px 15px;
@@ -962,7 +996,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 @media (max-width: 767px) {
-  #testimonials .testimonial-item {
+  #testimonials .testimonial-item ,  #eventos .testimonial-item{
     margin: 30px 10px;
   }
 }
@@ -1007,12 +1041,12 @@ body.mobile-nav-active #mobile-nav-toggle {
   margin: 0 auto 15px auto;
 }
 
-#testimonials .owl-nav, #testimonials .owl-dots {
+#testimonials .owl-nav, #testimonials .owl-dots, #eventos .owl-nav, #eventos .owl-dots {
   margin-top: 5px;
   text-align: center;
 }
 
-#testimonials .owl-dot {
+#testimonials .owl-dot, #eventos .owl-dot {
   display: inline-block;
   margin: 0 5px;
   width: 12px;
@@ -1021,7 +1055,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   background-color: #ddd;
 }
 
-#testimonials .owl-dot.active {
+#testimonials .owl-dot.active, #eventos .owl-dot.active {
   background-color: #50d8af;
 }
 
