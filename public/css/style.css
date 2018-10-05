@@ -1012,6 +1012,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   font-size: 18px;
   font-weight: bold;
   margin: 10px 0 5px 0;
+  text-align: center;
   color: #111;
 }
 
@@ -1185,6 +1186,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   margin-bottom: 15px;
   font-weight: bold;
   text-transform: uppercase;
+  text-align: center;
   color: #999;
 }
 

@@ -488,7 +488,7 @@
                 <img src="img/quote-sign-right.png" class="quote-sign-right" alt="">
               </p>
               <img src="img/testimonial-1.jpg" class="testimonial-img" alt="">
-              <h3>Saul Goodman</h3>
+              <h3>Juan Perez</h3>
               <h4>Ocupacion 1</h4>
             </div>
 
@@ -499,7 +499,7 @@
                 <img src="img/quote-sign-right.png" class="quote-sign-right" alt="">
               </p>
               <img src="img/testimonial-2.jpg" class="testimonial-img" alt="">
-              <h3>Sara Wilsson</h3>
+              <h3>Juan Perez</h3>
               <h4>Ocupacion 1</h4>
             </div>
 
@@ -510,7 +510,7 @@
                 <img src="img/quote-sign-right.png" class="quote-sign-right" alt="">
               </p>
               <img src="img/testimonial-3.jpg" class="testimonial-img" alt="">
-              <h3>Jena Karlis</h3>
+              <h3>Juan Perez</h3>
               <h4>Ocupacion 1</h4>
             </div>
 
@@ -521,7 +521,7 @@
                 <img src="img/quote-sign-right.png" class="quote-sign-right" alt="">
               </p>
               <img src="img/testimonial-4.jpg" class="testimonial-img" alt="">
-              <h3>Matt Brandon</h3>
+              <h3>Juan Perez</h3>
               <h4>Ocupacion 1</h4>
             </div>
 
@@ -532,7 +532,7 @@
                 <img src="img/quote-sign-right.png" class="quote-sign-right" alt="">
               </p>
               <img src="img/testimonial-5.jpg" class="testimonial-img" alt="">
-              <h3>John Larson</h3>
+              <h3>Juan Perez</h3>
               <h4>Ocupacion 1</h4>
             </div>
 
@@ -750,7 +750,7 @@
               <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Escriba su mensaje" placeholder="Mensaje"></textarea>
               <div class="validation"></div>
             </div>
-            <div class="text-center"><button type="submit">Send Message</button></div>
+            <div class="text-center"><button type="submit">Enviar Mensaje</button></div>
           </form>
         </div>
 
@@ -774,8 +774,6 @@
           Licensing information: https://bootstrapmade.com/license/
           Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Reveal
         -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>, 
-        Desarrollado e implementado por <a href="">IS&T</a>
       </div>
     </div>
   </footer><!-- #footer -->
