@@ -33,7 +33,7 @@
     Author: BootstrapMade.com
     License: https://bootstrapmade.com/license/
   ======================================================= -->
-  
+
 </head>
 
 <body id="body">
@@ -48,9 +48,9 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <form action="">         
+          <form action="">
             <div class="modal-body">
-              <div >              
+              <div >
                 <p>¿Deseas estar al tanto de todas las novedades que ofrece Bio-Well Bolivia?</p>
               </div>
               <input type="email"  class="form-control" placeholder="Correo Electronico" id="email">
@@ -161,7 +161,7 @@
             <h3>Bio-Well es un sistema revolucionario, no invasivo para medir el campo de energía humano a través de una cámara especializada y un sistema de software. Cada análisis devuelve una gran cantidad de información significativa para ofrecerle una visión verdaderamente integral de su bienestar.</h3>
             <h3>Bio-Well es el primer dispositivo de medición científica del campo energético de personas, objetos, lugares, etc. que permite medir, analizar, visualizar y corregir los campos energéticos.</h3>
 
-            <a href="#" class="btn-projects scrollto">Ver completo</a>
+            <a href="{{ route('biowell') }}" class="btn-projects scrollto">Ver completo</a>
 
           </div>
         </div>
@@ -177,7 +177,7 @@
             <h2>Quienes somos Bio-Well Bolivia</h2>
             <h3>descripcion de la empresa y algunas cosas mas que el cliente desee poner</h3>
 
-            <a href="#" class="btn-projects scrollto">Ver completo</a>
+            <a href="{{ route('biowellBolivia')}}" class="btn-projects scrollto">Ver completo</a>
 
           </div>
           <div class="col-lg-6 about-img">
@@ -202,7 +202,7 @@
           <div class="col-lg-6">
             <div class="box wow fadeInLeft">
               <div class="icon"><img src="img/about-img.jpg" alt="" class="img-thumbnail"></div>
-              <h4 class="title"><a href="">Medición Completa del campo </a></h4>
+              <h4 class="title"><a href="{{ route('verProducto')}}">Medición Completa del campo </a></h4>
               <p class="description">Descripcion del producto o servicio</p>
             </div>
           </div>
@@ -218,14 +218,14 @@
           <div class="col-lg-6">
             <div class="box wow fadeInLeft">
               <div class="icon"><img src="img/producto/p1.png" alt="" class="img-thumbnail"></div>
-              <h4 class="title"><a href="">Bio-well 2.0  </a></h4>
+              <h4 class="title"><a href="{{ route('verProducto')}}">Bio-well 2.0  </a></h4>
               <p class="description">Descripcion del producto o servicio</p>
             </div>
           </div>
 
           <div class="col-lg-6">
             <div class="box wow fadeInRight" data-wow-delay="0.2s">
-              <h4 class="title"><a href="">Todos los productos</a></h4>
+              <h4 class="title"><a href="{{ route('verProducto')}}">Todos los productos</a></h4>
               <div class="col-lg-12">
                 <a href="" class="btn btn-success  btn-block">Ingresar</a>
               </div>
@@ -260,8 +260,8 @@
                     <div class="col-lg-9 fecha">
                         <p> <span><i class="fa fa-calendar-plus-o"></i></span> 12 diciembre 2018</p>
                     </div>
-                    <div class="col-lg-3">                  
-                      <a href="#" class="btn btn-primary">Ver</a>
+                    <div class="col-lg-3">
+                      <a href="{{ route('eventos')}}" class="btn btn-primary">Ver</a>
                     </div>
                   </div>
                 </div>
@@ -277,8 +277,8 @@
                     <div class="col-lg-9 fecha">
                         <p> <span><i class="fa fa-calendar-plus-o"></i></span> 12 diciembre 2018</p>
                     </div>
-                    <div class="col-lg-3">                  
-                      <a href="#" class="btn btn-primary">Ver</a>
+                    <div class="col-lg-3">
+                      <a href="{{ route('eventos')}}" class="btn btn-primary">Ver</a>
                     </div>
                   </div>
                 </div>
@@ -294,8 +294,8 @@
                     <div class="col-lg-9 fecha">
                         <p> <span><i class="fa fa-calendar-plus-o"></i></span> 12 diciembre 2018</p>
                     </div>
-                    <div class="col-lg-3">                  
-                      <a href="#" class="btn btn-primary">Ver</a>
+                    <div class="col-lg-3">
+                      <a href="{{ route('eventos')}}" class="btn btn-primary">Ver</a>
                     </div>
                   </div>
                 </div>
@@ -311,8 +311,8 @@
                     <div class="col-lg-9 fecha">
                         <p> <span><i class="fa fa-calendar-plus-o"></i></span> 12 diciembre 2018</p>
                     </div>
-                    <div class="col-lg-3">                  
-                      <a href="#" class="btn btn-primary">Ver</a>
+                    <div class="col-lg-3">
+                      <a href="{{ route('eventos')}}" class="btn btn-primary">Ver</a>
                     </div>
                   </div>
                 </div>
@@ -328,8 +328,8 @@
                     <div class="col-lg-9 fecha">
                         <p> <span><i class="fa fa-calendar-plus-o"></i></span> 12 diciembre 2018</p>
                     </div>
-                    <div class="col-lg-3">                  
-                      <a href="#" class="btn btn-primary">Ver</a>
+                    <div class="col-lg-3">
+                      <a href="{{ route('eventos')}}" class="btn btn-primary">Ver</a>
                     </div>
                   </div>
                 </div>
@@ -345,8 +345,8 @@
                     <div class="col-lg-9 fecha">
                         <p> <span><i class="fa fa-calendar-plus-o"></i></span> 12 diciembre 2018</p>
                     </div>
-                    <div class="col-lg-3">                  
-                      <a href="#" class="btn btn-primary">Ver</a>
+                    <div class="col-lg-3">
+                      <a href="{{ route('eventos')}}" class="btn btn-primary">Ver</a>
                     </div>
                   </div>
                 </div>
@@ -360,7 +360,7 @@
 
 
 
-   
+
 
     <!--==========================
       Our Portfolio Section
@@ -551,7 +551,7 @@
             <h2>Nuestros Clientes</h2>
             <p>Descripcion de clientes, abajo se muestra su logotipo</p>
           </div>
-  
+
           <div class="owl-carousel clients-carousel">
             <img src="img/clients/client-1.png" alt="">
             <img src="img/clients/client-2.png" alt="">
@@ -562,7 +562,7 @@
             <img src="img/clients/client-7.png" alt="">
             <img src="img/clients/client-8.png" alt="">
           </div>
-  
+
         </div>
       </section><!-- #clients -->
 
@@ -750,7 +750,7 @@
               <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Escriba su mensaje" placeholder="Mensaje"></textarea>
               <div class="validation"></div>
             </div>
-            <div class="text-center"><button type="submit">Enviar Mensaje</button></div>
+            <div class="text-center"><button type="submit"  >Enviar Mensaje</button></div>
           </form>
         </div>
 
@@ -791,7 +791,7 @@
   <script src="lib/owlcarousel/owl.carousel.min.js"></script>
   <script src="lib/magnific-popup/magnific-popup.min.js"></script>
   <script src="lib/sticky/sticky.js"></script>
-  
+
   <script>
       $(document).ready(function(){
         $('#exampleModalCenter1').modal('show');
