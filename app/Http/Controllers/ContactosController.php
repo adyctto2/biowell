@@ -8,7 +8,7 @@ class ContactosController extends Controller
 {
   public function index()
   {
-    $titulo="Contactos Biowell";
-    return view('contactos.index', compact('titulo'));
+    $titulo2="Contactos Biowell";
+    return view('contactos.index', compact('titulo2'));
   }
 }

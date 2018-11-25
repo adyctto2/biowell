@@ -1,0 +1,15 @@
+
+@extends('biowell.index')
+
+@section('biowell-contenido')
+    <h3 style="color: orange">{{$titulo2}}</h3>
+    <p>Es bien sabido que las personas cayeron de manera diferente dependiendo de la situación ambiental. En algunos lugares duermes como un bebé y te despiertas lleno de energía; en otros lugares tienes sueños maravillosos y viajas a lugares hermosos mientras duermes. Sin embargo, desde hace miles de años, la existencia de lugares específicos donde las personas no duermen bien, se enferman más fácilmente o donde el rendimiento es menor se ha conocido empíricamente. ¿Cuál es la diferencia entre todos estos lugares? Muy poco se sabe en la ciencia occidental. Está claro que las combinaciones de diferentes causas componen el fenómeno. Esta es una combinación de la influencia de la Tierra: anomalías subterráneas, huecos, corrientes de agua; Gases en la atmósfera, tanto naturales como industriales; fondo electromagnético; y la influencia del Universo, el Sol, la Luna y los rayos cósmicos. Ahora es prácticamente imposible distinguir entre todos estos factores, por lo que necesitamos un denominador común para evaluar la situación general en el lugar en particular. Solo se dispone de evidencia rudimental en la actualidad, si dichas zonas pudieran medirse utilizando un aparato físico aceptado.</p>
+    <img src="{{asset('img/sputnik.jpg')}}"  width="100%" alt="">
+    <p>El instrumento Bio-Well te da tal oportunidad. Muchos años de investigación confirman la idea de que permite evaluar la situación de la energía en el medio ambiente. Expediciones a diferentes partes del mundo: Perú, Colombia, India, Myanmar, Siberia y muchos otros demostraron la sensibilidad del instrumento para evaluar el medio ambiente. Los antecedentes científicos se han desarrollado y publicado en revistas por revisión, se han otorgado patentes en varios países y ahora este instrumento está disponible para uso público.</p>
+    <p>Es necesario tomar medidas durante al menos 30 minutos; El tiempo máximo no está limitado. En un entorno tranquilo y apacible, después de la configuración inicial durante aproximadamente 5-15 minutos, la señal se vuelve bastante estable</p>
+    <img src="{{asset('img/env1.png')}}"  width="100%" alt="">
+    <p>En la zona geoactiva las variaciones de la energía pueden ser muy altas. El gráfico a continuación muestra la variación de energía fuera y dentro del círculo de cultivo en Inglaterra en el verano de 2006. Como puede ver, la energía fuera del círculo de cultivo fue bastante estable, mientras que dentro de ella aumentó durante todo el tiempo de medición</p>
+    <img src="{{asset('img/env2.png')}}"  width="100%" alt="">
+    <p>De la misma manera puede detectar el cambio de energía durante el amanecer y el atardecer, o la tormenta que se avecina. En paralelo, puede medir la transformación del Campo de Energía Humana, de usted y de otras personas. De esta manera verás tu propia reacción a los cambios en el entorno. Una gran cantidad de datos se presentan en el libro de K. Korotkov "La energía del espacio" que se puede encontrar en <a href="{{ asset('https://www.amazon.com')}}">Amazon.com</a> .</p>
+@endsection
+

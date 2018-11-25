@@ -8,22 +8,22 @@
   <meta content="" name="description">
 
   <!-- Favicons -->
-  <link href="img/index.ico" rel="icon">
+  <link href="{{ asset('img/index.ico')}}" rel="icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800|Montserrat:300,400,700" rel="stylesheet">
 
   <!-- Bootstrap CSS File -->
-  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="{{ asset('lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
 
   <!-- Libraries CSS Files -->
-  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="lib/animate/animate.min.css" rel="stylesheet">
-  <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="lib/magnific-popup/magnific-popup.css" rel="stylesheet">
-  <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-
+  <link href="{{ asset('lib/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+  <link href="{{ asset('lib/animate/animate.min.css')}}" rel="stylesheet">
+  <link href="{{ asset('lib/ionicons/css/ionicons.min.css')}}" rel="stylesheet">
+  <link href="{{ asset('lib/owlcarousel/assets/owl.carousel.min.css')}}" rel="stylesheet">
+  <link href="{{ asset('lib/magnific-popup/magnific-popup.css')}}" rel="stylesheet">
+  <link href="{{ asset('lib/ionicons/css/ionicons.min.css')}}" rel="stylesheet">
+  <link rel="stylesheet" href="{{asset('https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css')}}">
   <!-- Main Stylesheet File -->
   <link href="css/style.css" rel="stylesheet">
 
@@ -48,16 +48,20 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <form action="">
+          <form v-on:submit.prevent="registrar" method="post">
+              {{csrf_field()}}
             <div class="modal-body">
               <div >
                 <p>¿Deseas estar al tanto de todas las novedades que ofrece Bio-Well Bolivia?</p>
               </div>
-              <input type="email"  class="form-control" placeholder="Correo Electronico" id="email">
+              <input type="email"  class="form-control" placeholder="Correo Electronico" id="email" v-model="emails" required>
+              <div style="text-align: center">
+                <span class="text-danger" >@{{ mensaje }}</span>
+              </div>
             </div>
             <div class="modal-footer">
+              <input type="submit" class="btn btn-primary" id="guardar" value="Aceptar" name="aceptar">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-              <input type="submit" class="btn btn-primary" id="guardar" value="Aceptar">
             </div>
           </form>
         </div>
@@ -70,8 +74,8 @@
   <section id="topbar" class="d-none d-lg-block">
     <div class="container clearfix">
       <div class="contact-info float-left">
-        <i class="fa fa-envelope-o"></i> <a href="mailto:biowell@example.com">biowell@example.com</a>
-        <i class="fa fa-phone"></i> 74944332
+        <i class="fa fa-envelope-o"></i> <a href="mailto:info@biowellbolivia.com">info@biowellbolivia.com</a>
+        <i class="fa fa-phone"></i> +591 72031454
       </div>
       <div class="social-links float-right">
         <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
@@ -90,7 +94,7 @@
     <div class="container">
 
       <div id="logo" class="pull-left">
-        <a href="#body" class="scrollto"><img src="img/logo.png" width="50px" alt="Biowell Bolivia">
+        <a href="#body" class="scrollto"><img src="{{asset('img/Logo.png')}}" width="50px" alt="Biowell Bolivia">
         Bio-Well Bolivia</a>
         <!-- Uncomment below if you prefer to use an image logo -->
       </div>
@@ -102,19 +106,19 @@
             <ul>
               <li><a href="#about">Bio-Well</a></li>
               <li><a href="#aboutBioWell">Nosotros</a></li>
+              <li><a href="#testimonio">Testimonios</a></li>
+              <li><a href="#korotkov">Dr. Konstantin G. Korotkov</a></li>
             </ul>
           </li>
           <li><a href="#services">Servicios y Productos</a></li>
-          <li><a href="#eventos">Eventos</a></li>
-          <li><a href="#testimonials">Testimonios</a>
-            <ul><a href="#clients">Clientes</a></ul>
-          </li>
+          <!-- <li><a href="#eventos">Eventos</a></li> -->
+          <!-- <li><a href="#testimonials">Testimonios</a>
+            <ul><li><a href="#clients">Clientes</a></li></ul>
+          </li> -->
+          <!-- <li><a href="#portfolio">Multimedia</a></li> -->
+          <li><a href="{{ route('pf')}}">Preguntas Frecuentes</a></li>
           <li><a href="#contact">Contactos</a></li>
-          <li class="menu-has-children"><a ><i class="fa fa-plus" aria-hidden="true"></i></a>
-            <ul>
-              <li><a href="#">Multimedia</a></li>
-            </ul>
-          </li>
+          
         </ul>
       </nav><!-- #nav-menu-container -->
     </div>
@@ -126,11 +130,12 @@
   <section id="intro">
 
     <div class="intro-content">
-      <h1>Bio-Well Bolivia</h1>
-      <p>Poner un eslogan o un texto</p>
+      <h1><strong>Bio-<span style="color: rgb(255, 102, 0)">Well</span> Bolivia</strong></h1>
+      <p><strong> LA COMPANIA # 1 EN EL MUNDO DE GDV </strong></p>
+      <h2>ESCANEAR TU LUZ INTERIOR</h2>
       <div>
         <a href="#about" class="btn-get-started scrollto">Saber mas</a>
-        <a href="#portfolio" class="btn-projects scrollto">Servicios</a>
+        <a href="#services" class="btn-projects scrollto">Servicios</a>
       </div>
     </div>
 
@@ -153,15 +158,17 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-6 about-img">
-            <img src="img/about-img.jpg" alt="">
+            <img src="{{ asset('img/producto/1.jpg')}}" alt="">
+            <!-- <video width="100%" height="100%" controls>
+              <source src="/video/video.mp4" typw="video/mp4">
+            </video>                -->
           </div>
 
           <div class="col-lg-6 content">
             <h2>Que es Bio-Well</h2>
             <h3>Bio-Well es un sistema revolucionario, no invasivo para medir el campo de energía humano a través de una cámara especializada y un sistema de software. Cada análisis devuelve una gran cantidad de información significativa para ofrecerle una visión verdaderamente integral de su bienestar.</h3>
-            <h3>Bio-Well es el primer dispositivo de medición científica del campo energético de personas, objetos, lugares, etc. que permite medir, analizar, visualizar y corregir los campos energéticos.</h3>
 
-            <a href="{{ route('biowell') }}" class="btn-projects scrollto">Ver completo</a>
+            <a href="{{ route('ques') }}" class="btn-projects scrollto">Ver completo</a>
 
           </div>
         </div>
@@ -175,13 +182,16 @@
 
           <div class="col-lg-6 content">
             <h2>Quienes somos Bio-Well Bolivia</h2>
-            <h3>descripcion de la empresa y algunas cosas mas que el cliente desee poner</h3>
+            <h3></h3>
 
             <a href="{{ route('biowellBolivia')}}" class="btn-projects scrollto">Ver completo</a>
 
           </div>
           <div class="col-lg-6 about-img">
-            <img src="img/about-img.jpg" alt="">
+            <img src="{{ asset('img/producto/3.jpg')}}" alt="">
+            <!-- <video width="100%" height="100%" controls >
+              <source src="/video/video.mp4" typw="video/mp4">
+            </video>      -->
           </div>
         </div>
 
@@ -190,172 +200,218 @@
     <!--==========================
       Services Section
     ============================-->
+
     <section id="services">
       <div class="container">
         <div class="section-header">
-          <h2>Servicios y Productos</h2>
-          <p>Pequeña descripcion de los servicios y productos que ofrece biowell - posteriormente muestra lo mas relevante, solo algunos ejemplos segun la pagina de biowell argentina</p>
+          <h2>Con productos BIO-WELL se puede:</h2>
+         <div class="row">
+           <div class="col-md-4">
+              <div class="card">
+                  <video width="100%" class="card-img-top" height="100%" controls >
+                      <source src="/video/video.mp4" typw="video/mp4">
+                    </video>
+                  <h5 class="card-title">Campo de energia</h5>
+                  <div class="card-body">
+                    <p class="card-text">Medir el campo de energía de una persona, que refleja el estado fisiológico, el estado de ánimo y las emociones y, en algunos casos, el estado espiritual.</p>
+                  </div>
+                </div>
+           </div>
+           <div class="col-md-4">
+              <div class="card">
+                  <video width="100%" class="card-img-top" height="100%" controls >
+                      <source src="/video/video.mp4" typw="video/mp4">
+                    </video><h5 class="card-title">Medición del estres</h5>
+                  <div class="card-body">
+                    <p class="card-text">Medir el nivel de estrés de la persona. De este indicador depende la dinámica de cambios en el estado en el futuro.</p>
+                  </div>
+                </div>
+           </div>
+           <div class="col-md-4">
+              <div class="card">
+                  <video width="100%" class="card-img-top" height="100%" controls >
+                      <source src="/video/video.mp4" typw="video/mp4">
+                    </video>
+                    <h5 class="card-title">Medición del Chakra</h5>
+                  <div class="card-body">
+                    <p class="card-text">Mida los chakras y cree música meditativa individual para armonizar los flujos de energía, que afectan a todos los órganos del cuerpo humano.</p>
+                  </div>
+                </div>
+           </div>
+           
+         </div><br>
+         <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <video width="100%" class="card-img-top" height="100%" controls >
+                        <source src="/video/video.mp4" typw="video/mp4">
+                      </video>
+                    <h5 class="card-title">Estado de Salud</h5>
+                    <div class="card-body">
+                      <p class="card-text">Evaluar el estado de salud y el potencial energético humano. El análisis se produce cuando se utilizan las características del brillo de los dedos.</p>
+                    </div>
+                  </div>
+             </div>
+             <div class="col-md-4">
+                <div class="card">
+                    <video width="100%" class="card-img-top" height="100%" controls >
+                        <source src="/video/video.mp4" typw="video/mp4">
+                      </video><h5 class="card-title">Escaneo de Energia</h5>
+                    <div class="card-body">
+                      <p class="card-text">Evaluar el balance energético del estado de las mitades derecha e izquierda. Esto es muy importante a la hora de elegir métodos para corregir el estado.</p>
+                    </div>
+                  </div>
+             </div>
+             <div class="col-md-4">
+                <div class="card">
+                    <video width="100%" class="card-img-top" height="100%" controls >
+                        <source src="/video/video.mp4" typw="video/mp4">
+                      </video>
+                      <h5 class="card-title">Analisis Ambiental</h5>
+                    <div class="card-body">
+                      <p class="card-text">Análisis ambiental durante mucho tiempo con posterior procesamiento de datos.</p>
+                    </div>
+                  </div>
+             </div>
+         </div>
+
         </div>
 
-        <div class="row">
-
-          <div class="col-lg-6">
-            <div class="box wow fadeInLeft">
-              <div class="icon"><img src="img/about-img.jpg" alt="" class="img-thumbnail"></div>
-              <h4 class="title"><a href="{{ route('verProducto')}}">Medición Completa del campo </a></h4>
-              <p class="description">Descripcion del producto o servicio</p>
-            </div>
-          </div>
-
-          <div class="col-lg-6">
-            <div class="box wow fadeInLeft">
-              <div class="icon"><img src="img/about-img.jpg" alt="" class="img-thumbnail"></div>
-              <h4 class="title"><a href="">Medición del estrés </a></h4>
-              <p class="description">Descripcion del producto o servicio</p>
-            </div>
-          </div>
-
-          <div class="col-lg-6">
-            <div class="box wow fadeInLeft">
-              <div class="icon"><img src="img/producto/p1.png" alt="" class="img-thumbnail"></div>
-              <h4 class="title"><a href="{{ route('verProducto')}}">Bio-well 2.0  </a></h4>
-              <p class="description">Descripcion del producto o servicio</p>
-            </div>
-          </div>
-
-          <div class="col-lg-6">
-            <div class="box wow fadeInRight" data-wow-delay="0.2s">
-              <h4 class="title"><a href="{{ route('verProducto')}}">Todos los productos</a></h4>
-              <div class="col-lg-12">
-                <a href="" class="btn btn-success  btn-block">Ingresar</a>
+        <div class="row" style="padding: 10px">
+          <div class="col-lg-6 box wow fadeInLeft">
+              <div><h3 style="text-align: center; "><strong>PRODUCTOS</strong> </h3></div>
+              <a  class="enlace_productos" href="{{ route('productosshow',['id' =>  $datos->id])}}"> <div class=" row producto__contenido">
+                <div class="col-sm-4" >
+                  <img src="{{ asset('img/producto/'.$datos->imagen)}}" class="img-responsive img-thumbnail" alt="">
+                </div>
+                <div class="col-sm-8" >
+                    <h4>{{ $datos->nombre }}</h4>
+                    <p class="descripcion_p">{{ $datos->descripcion }}</p>
+                </div>
+              </div></a>
+              <div style="align-content: center;">
+                <a href="{{ route('productos')}}" class="btn btn-primary" style="font-size: 30px"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
               </div>
-            </div>
           </div>
-
+          <div class="col-lg-6 box wow fc adeInLeft">
+              <div><h3 style="text-align: center; "><strong>SERVICIOS</strong> </h3></div>
+              <a  class="enlace_productos" href="{{ route('serviciosshow',['id' =>  $datos2->id])}}"> <div class=" row producto__contenido">
+                <div class="col-sm-4" >
+                  <img src="{{ asset('img/servicios/'.$datos2->imagen)}}" class="img-responsive img-thumbnail" alt="">
+                </div>
+                <div class="col-sm-8" >
+                    <h4>{{ $datos2->nombre }}</h4>
+                    <p class="descripcion_p">{{ $datos2->descripcion }}</p>
+                </div>
+              </div></a>
+              <div style="align-content: center;">
+                <a href="{{ route('servicios')}}" class="btn btn-primary" style="font-size: 30px"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+              </div>
+          </div>
         </div>
-
       </div>
     </section><!-- #services -->
 
 
+    <section id="testimonio" class="wow fadeInUp">
+        <div class="container">
+          <div class="section-header">
+            <h2>Testimonios</h2>
+          </div>
+          <div class="row" >
+            <div class="col-md-6" style="margin-top:20px;">
+              <div class="contenido">
 
+                <p>
+                  <strong>«</strong>  <br> 
+                  El dispositivo informático "GDV Bio-Well" utilizado en el estudio proporciona una estimación suficientemente precisa de los parámetros del estado psicofisiológico de los atletas. A través de la investigación de las imágenes de los dedos fluorescentes, que cambian dinámicamente con los estados emocionales y de salud, se pueden identificar áreas de congestión de la salud en todo el sistema. El dispositivo informático “GDV Bio-Well” permite un rápido monitoreo del proceso de adaptación a los atletas de alto nivel durante los períodos previos a la competencia y de competición y la implementación oportuna de las medidas correctivas necesarias.
+                  <br><strong>»</strong>
+                </p>
+                <hr>
+                <div class="row">
+                  <div class="col-md-3">
+                    <img src="{{ asset('img/testimonial-2.jpg')}}" alt="" width="100%" style="border-radius: 50% ">
+                  </div>
+                  <div class="col-md-9">
+                    <h6><strong> Irina Gromova</strong></h6>
+                    <p>Entrenador del Equipo Paralímpico de Esquí y Biatlón de Rusia</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6" style="margin-top:20px;">
+                <div class="contenido">
+
+                    <p>
+                        <strong>«</strong>  <br> 
+                        Este es un excelente instrumento, muy conveniente, fácil de usar e informativo. Lo estoy usando tanto en el instituto como en mis viajes y lo encuentro muy preciso y confiable. "
+                        <br><strong>»</strong>
+                    </p>
+                    <hr>
+                    <div class="row">
+                      <div class="col-md-3">
+                        <img src="{{ asset('img/testimonial-1.jpg')}}" alt="" width="100%" style="border-radius: 50% ">
+                      </div>
+                      <div class="col-md-9">
+                        <h6><strong> P. Krishna Madappa</strong></h6>
+                        <p>Presidente y co-fundador: Instituto para la ciencia, espiritualidad y sostenibilidad</p>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <section id="korotkov" class="wow fadeInUp">
+          <div class="container">
+            <div class="section-header">
+              <h2>Dr. Konstantin G. Korotkov</h2>
+            </div>
+            <div class="row" >
+              <div class="col-md-4">
+                <img src="{{ asset('img/dr.png')}}" width="100%" alt="">
+              </div>
+              <div class="col-md-8">
+                <p>Konstantin Korotkov, PhD, profesor, es profesor de ciencias de la computación y biofísica en la Universidad de San Petersburgo de Tecnologías de la Información, Mecánica y Óptica en Rusia e investigador principal en el Instituto de Investigación de Actividad Física y Deporte de San Petersburgo. </p>
+                
+                <a href="#about" class="btn-get-started scrollto">Saber mas</a>
+              </div>
+            </div>
+          </div>
+        </section>
 <!--==========================
       eventos Section
     ============================-->
-    <section id="eventos" class="wow fadeInUp">
+    <!-- <section id="eventos" class="wow fadeInUp">
       <div class="container">
         <div class="section-header">
-          <h2>Eventos y Noticias</h2>
+          <h2>Eventos</h2>
           <p>Descripcion de la seccion</p>
         </div>
         <div class="owl-carousel testimonials-carousel">
-
+          @foreach($eventos as $ev)
             <div class="testimonial-item">
-                <img class="card-img-top" src="img/noticias/noticia1.jpg" alt="Card image cap">
-
+                <img class="card-img-top" src="{{ asset('img/evento/'.$ev->imagen)}}" alt="Card image cap">
+                <div class="fecha">
+                    <p> <span><i class="fa fa-calendar-plus-o"></i></span> {{ \Carbon\Carbon::parse($ev->fecha_curso)->format('d') }} de {{ $meses[\Carbon\Carbon::parse($ev->fecha_curso)->format('m')-1]}}</p>
+                </div>
+                
+                <h5 class="card-title"><strong>{{ $ev->nombre}} </strong></h5>
                 <div class="card-body">
-                  <h5 class="card-title"><strong>Noticias o Evento </strong></h5>
-                  <p class="card-text contenido">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <p class="card-text contenido">{{ $ev->descripcion}}</p>
                   <div class="row">
-                    <div class="col-lg-9 fecha">
-                        <p> <span><i class="fa fa-calendar-plus-o"></i></span> 12 diciembre 2018</p>
-                    </div>
-                    <div class="col-lg-3">
-                      <a href="{{ route('eventos')}}" class="btn btn-primary">Ver</a>
+                    <div class="col-lg-6">
+                      <a href="{{ route('eventosShow',['id' =>  $ev->id])}}" class="btn btn-primary">Mas información</a>
                     </div>
                   </div>
                 </div>
             </div>
-
-            <div class="testimonial-item">
-                <img class="card-img-top" src="img/noticias/noticia1.jpg" alt="Card image cap">
-
-                <div class="card-body">
-                  <h5 class="card-title"><strong>Noticias o Evento </strong></h5>
-                  <p class="card-text contenido">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <div class="row">
-                    <div class="col-lg-9 fecha">
-                        <p> <span><i class="fa fa-calendar-plus-o"></i></span> 12 diciembre 2018</p>
-                    </div>
-                    <div class="col-lg-3">
-                      <a href="{{ route('eventos')}}" class="btn btn-primary">Ver</a>
-                    </div>
-                  </div>
-                </div>
-            </div>
-
-            <div class="testimonial-item">
-                <img class="card-img-top" src="img/noticias/noticia1.jpg" alt="Card image cap">
-
-                <div class="card-body">
-                  <h5 class="card-title"><strong>Noticias o Evento </strong></h5>
-                  <p class="card-text contenido">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <div class="row">
-                    <div class="col-lg-9 fecha">
-                        <p> <span><i class="fa fa-calendar-plus-o"></i></span> 12 diciembre 2018</p>
-                    </div>
-                    <div class="col-lg-3">
-                      <a href="{{ route('eventos')}}" class="btn btn-primary">Ver</a>
-                    </div>
-                  </div>
-                </div>
-            </div>
-
-            <div class="testimonial-item">
-                <img class="card-img-top" src="img/noticias/noticia1.jpg" alt="Card image cap">
-
-                <div class="card-body">
-                  <h5 class="card-title"><strong>Noticias o Evento </strong></h5>
-                  <p class="card-text contenido">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <div class="row">
-                    <div class="col-lg-9 fecha">
-                        <p> <span><i class="fa fa-calendar-plus-o"></i></span> 12 diciembre 2018</p>
-                    </div>
-                    <div class="col-lg-3">
-                      <a href="{{ route('eventos')}}" class="btn btn-primary">Ver</a>
-                    </div>
-                  </div>
-                </div>
-            </div>
-
-            <div class="testimonial-item">
-                <img class="card-img-top" src="img/noticias/noticia1.jpg" alt="Card image cap">
-
-                <div class="card-body">
-                  <h5 class="card-title"><strong>Noticias o Evento </strong></h5>
-                  <p class="card-text contenido">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <div class="row">
-                    <div class="col-lg-9 fecha">
-                        <p> <span><i class="fa fa-calendar-plus-o"></i></span> 12 diciembre 2018</p>
-                    </div>
-                    <div class="col-lg-3">
-                      <a href="{{ route('eventos')}}" class="btn btn-primary">Ver</a>
-                    </div>
-                  </div>
-                </div>
-            </div>
-
-            <div class="testimonial-item">
-                <img class="card-img-top" src="img/noticias/noticia1.jpg" alt="Card image cap">
-
-                <div class="card-body">
-                  <h5 class="card-title"><strong>Noticias o Evento </strong></h5>
-                  <p class="card-text contenido">DEscripcion de la seccion </p>
-                  <div class="row">
-                    <div class="col-lg-9 fecha">
-                        <p> <span><i class="fa fa-calendar-plus-o"></i></span> 12 diciembre 2018</p>
-                    </div>
-                    <div class="col-lg-3">
-                      <a href="{{ route('eventos')}}" class="btn btn-primary">Ver</a>
-                    </div>
-                  </div>
-                </div>
-            </div>
-
+          @endforeach
         </div>
-
       </div>
-    </section><!-- #testimonials -->
+    </section>#testimonials -->
 
 
 
@@ -368,101 +424,25 @@
     <!-- <section id="portfolio" class="wow fadeInUp">
       <div class="container">
         <div class="section-header">
-          <h2>Our Portfolio</h2>
-          <p>Sed tamen tempor magna labore dolore dolor sint tempor duis magna elit veniam aliqua esse amet veniam enim export quid quid veniam aliqua eram noster malis nulla duis fugiat culpa esse aute nulla ipsum velit export irure minim illum fore</p>
+          <h2>Imagenes o videos</h2>
+          <p>Seccion donde se pondran imagenes o videos</p>
         </div>
       </div>
 
       <div class="container-fluid">
         <div class="row no-gutters">
-
+          @for($i = 0; $i<10; $i++)
           <div class="col-lg-3 col-md-4">
             <div class="portfolio-item wow fadeInUp">
-              <a href="img/portfolio/1.jpg" class="portfolio-popup">
-                <img src="img/portfolio/1.jpg" alt="">
+              <a href="img/portfolio/{{$i+1}}.jpg" class="portfolio-popup">
+                <img src="img/portfolio/{{$i+1}}.jpg" alt="">
                 <div class="portfolio-overlay">
-                  <div class="portfolio-info"><h2 class="wow fadeInUp">Portfolio Item 1</h2></div>
+                  <div class="portfolio-info"><h2 class="wow fadeInUp">Imagen {{ $i+1 }}</h2></div>
                 </div>
               </a>
             </div>
           </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="portfolio-item wow fadeInUp">
-              <a href="img/portfolio/2.jpg" class="portfolio-popup">
-                <img src="img/portfolio/2.jpg" alt="">
-                <div class="portfolio-overlay">
-                  <div class="portfolio-info"><h2 class="wow fadeInUp">Portfolio Item 2</h2></div>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="portfolio-item wow fadeInUp">
-              <a href="img/portfolio/3.jpg" class="portfolio-popup">
-                <img src="img/portfolio/3.jpg" alt="">
-                <div class="portfolio-overlay">
-                  <div class="portfolio-info"><h2 class="wow fadeInUp">Portfolio Item 3</h2></div>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="portfolio-item wow fadeInUp">
-              <a href="img/portfolio/4.jpg" class="portfolio-popup">
-                <img src="img/portfolio/4.jpg" alt="">
-                <div class="portfolio-overlay">
-                  <div class="portfolio-info"><h2 class="wow fadeInUp">Portfolio Item 4</h2></div>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="portfolio-item wow fadeInUp">
-              <a href="img/portfolio/5.jpg" class="portfolio-popup">
-                <img src="img/portfolio/5.jpg" alt="">
-                <div class="portfolio-overlay">
-                  <div class="portfolio-info"><h2 class="wow fadeInUp">Portfolio Item 5</h2></div>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="portfolio-item wow fadeInUp">
-              <a href="img/portfolio/6.jpg" class="portfolio-popup">
-                <img src="img/portfolio/6.jpg" alt="">
-                <div class="portfolio-overlay">
-                  <div class="portfolio-info"><h2 class="wow fadeInUp">Portfolio Item 6</h2></div>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="portfolio-item wow fadeInUp">
-              <a href="img/portfolio/7.jpg" class="portfolio-popup">
-                <img src="img/portfolio/7.jpg" alt="">
-                <div class="portfolio-overlay">
-                  <div class="portfolio-info"><h2 class="wow fadeInUp">Portfolio Item 7</h2></div>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4">
-            <div class="portfolio-item wow fadeInUp">
-              <a href="img/portfolio/8.jpg" class="portfolio-popup">
-                <img src="img/portfolio/8.jpg" alt="">
-                <div class="portfolio-overlay">
-                  <div class="portfolio-info"><h2 class="wow fadeInUp">Portfolio Item 8</h2></div>
-                </div>
-              </a>
-            </div>
-          </div>
+          @endfor
 
         </div>
 
@@ -473,7 +453,7 @@
     <!--==========================
       Testimonials Section
     ============================-->
-    <section id="testimonials" class="wow fadeInUp">
+    <!-- <section id="testimonials" class="wow fadeInUp">
       <div class="container">
         <div class="section-header">
           <h2>Testimonios</h2>
@@ -539,13 +519,13 @@
         </div>
 
       </div>
-    </section><!-- #testimonials -->
+    </section> -->
 
 
  <!--==========================
       Clients Section
     ============================-->
-    <section id="clients" class="wow fadeInUp">
+    <!-- <section id="clients" class="wow fadeInUp">
         <div class="container">
           <div class="section-header">
             <h2>Nuestros Clientes</h2>
@@ -564,7 +544,7 @@
           </div>
 
         </div>
-      </section><!-- #clients -->
+      </section>#clients -->
 
     <!--==========================
       Call To Action Section
@@ -669,7 +649,6 @@
       <div class="container">
         <div class="section-header">
           <h2>Contactanos</h2>
-          <p>descripcion de contactos</p>
         </div>
 
         <div class="row contact-info">
@@ -713,7 +692,7 @@
           </button>
         </div>
         <div class="modal-body">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15035.817365845083!2d-65.74977187729495!3d-19.586456693351934!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x93f94e7a742dc163%3A0xf0943a56bebdf962!2sCasa+Nacional+de+la+Moneda!5e0!3m2!1ses!2sbo!4v1538677444749" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3825.1650480522176!2d-68.0895599851357!3d-16.517763188605148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x915f2104ef3d93a1%3A0x5d216d5df76ceded!2sCalle+13+44%2C+La+Paz!5e0!3m2!1ses!2sbo!4v1543120785076" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
         </div>
       </div>
     </div>
@@ -781,17 +760,18 @@
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
   <!-- JavaScript Libraries -->
-  <script src="lib/jquery/jquery.min.js"></script>
-  <script src="lib/jquery/jquery-migrate.min.js"></script>
-  <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="lib/easing/easing.min.js"></script>
-  <script src="lib/superfish/hoverIntent.js"></script>
-  <script src="lib/superfish/superfish.min.js"></script>
-  <script src="lib/wow/wow.min.js"></script>
-  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-  <script src="lib/magnific-popup/magnific-popup.min.js"></script>
-  <script src="lib/sticky/sticky.js"></script>
-
+  <script src="{{ asset('lib/jquery/jquery.min.js') }}"></script>
+  <script src="{{ asset('lib/jquery/jquery-migrate.min.js') }}"></script>
+  <script src="{{ asset('lib/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+  <script src="{{ asset('lib/easing/easing.min.js') }}"></script>
+  <script src="{{ asset('lib/superfish/hoverIntent.js') }}"></script>
+  <script src="{{ asset('lib/superfish/superfish.min.js') }}"></script>
+  <script src="{{ asset('lib/wow/wow.min.js') }}"></script>
+  <script src="{{ asset('lib/owlcarousel/owl.carousel.min.js') }}"></script>
+  <script src="{{ asset('lib/magnific-popup/magnific-popup.min.js') }}"></script>
+  <script src="{{ asset('lib/sticky/sticky.js') }}"></script>
+  <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js')}}"></script>
+  <SCRipt src="{{ asset('js/app.js')}}"></SCRipt>
   <script>
       $(document).ready(function(){
         $('#exampleModalCenter1').modal('show');
@@ -805,6 +785,15 @@
 
   <!-- Template Main Javascript File -->
   <script src="js/main.js"></script>
-
+    <script>
+      
+window.addEventListener('load', ()=>{
+  var dat = document.querySelectorAll(".descripcion_p");
+  var texto = dat[0].innerHTML.substr(0,150);
+  dat[0].innerHTML = texto+" ...";
+  var texto = dat[1].innerHTML.substr(0,150);
+  dat[1].innerHTML = texto+" ...";
+});
+    </script>
 </body>
 </html>

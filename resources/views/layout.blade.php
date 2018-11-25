@@ -2,30 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>BioWell Bolivia</title>
+  <title>{{ $titulo2}}</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
 
   <!-- Favicons -->
-  <link href="img/index.ico" rel="icon">
+  <link href="{{ asset('img/index.ico') }}" rel="icon">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800|Montserrat:300,400,700" rel="stylesheet">
+  <link href="{{asset('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800|Montserrat:300,400,700')}}" rel="stylesheet">
 
   <!-- Bootstrap CSS File -->
-  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="{{ asset('lib/bootstrap/css/bootstrap.css') }}" rel="stylesheet">
 
   <!-- Libraries CSS Files -->
-  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <link href="lib/animate/animate.min.css" rel="stylesheet">
-  <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
-  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link href="lib/magnific-popup/magnific-popup.css" rel="stylesheet">
-  <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+  <link href="{{ asset('lib/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('lib/animate/animate.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('lib/ionicons/css/ionicons.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+  <link href="{{ asset('lib/magnific-popup/magnific-popup.css') }}" rel="stylesheet">
+  <link href="{{ asset('lib/ionicons/css/ionicons.min.css') }}" rel="stylesheet">
 
   <!-- Main Stylesheet File -->
-  <link href="css/style.css" rel="stylesheet">
+  <link href="{{ asset('css/style.css')}}" rel="stylesheet">
 
   <!-- =======================================================
     Theme Name: Reveal
@@ -90,36 +90,37 @@
     <div class="container">
 
       <div id="logo" class="pull-left">
-        <a href="{{ route('principal')}}" class="scrollto"><img src="img/logo.png" width="50px" alt="Biowell Bolivia">
+        <a href="{{ route('principal')}}" class="scrollto"><img src="{{ asset('img/Logo.png')}}" width="50px" alt="Biowell Bolivia">
         Bio-Well Bolivia</a>
         <!-- Uncomment below if you prefer to use an image logo -->
       </div>
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-          <li class="menu-active"><a href="{{ route('principal')}}">Inicio</a></li>
-          <li class="menu-has-children"><a>Acerca de</a>
+          <li class="menu-has-children {{ Request::is('biowellBolivia') ? 'menu-active' : Request::is('biowell')? 'menu-active' : '' }}"><a>Acerca de</a>
             <ul>
-              <li><a href="#about">Bio-Well</a></li>
-              <li><a href="#aboutBioWell">Nosotros</a></li>
+              <li><a href="{{ route('ques')}}">Bio-Well</a></li>
+              <li><a href="{{ route('biowellBolivia')}}">Nosotros</a></li>
             </ul>
           </li>
-          <li><a href="{{ route('listaProductos')}}">Servicios y Productos</a></li>
-          <li><a href="{{ route('listaEventos')}}">Eventos</a></li>
-          <li><a href="#testimonials">Testimonios</a>
-            <ul><a href="#clients">Clientes</a></ul>
-          </li>
-          <li><a href="{{ route('contactos') }}">Contactos</a></li>
-          <li class="menu-has-children"><a ><i class="fa fa-plus" aria-hidden="true"></i></a>
-            <ul>
-              <li><a href="#">Multimedia</a></li>
-            </ul>
-          </li>
+          <li class="{{ Request::is('oferta') ? 'menu-active' : '' }}"><a href="{{ route('oferta') }}">Servicios y Productos</a></li>
+          <!-- <li class="{{ Request::is('eventos') ? 'menu-active' : '' }}"><a href="{{ route('eventos')}}">Eventos</a></li> -->
+          <!-- <li><a href="#testimonials">Testimonios</a>
+            <ul><li><a href="#clients">Clientes</a></li></ul>
+          </li> -->
+          <!-- <li class="{{ Request::is('multimedia') ? 'menu-active' : '' }}"><a href="{{ route('multimedia')}}">Multimedia</a></li> -->
+          <li class="{{ Request::is('preguntas-frecuentes') ? 'menu-active' : '' }}"><a href="{{ route('pf')}}">Preguntas Frecuentes</a></li>
+          
+          <li class="{{ Request::is('contactos') ? 'menu-active' : '' }}"><a href="{{route('contactos')}}">Contactos</a></li>
         </ul>
       </nav><!-- #nav-menu-container -->
     </div>
   </header><!-- #header -->
-  @yield('formularios')
+  <main>
+    <div class="container contenido-biowell">
+      @yield('formularios')
+    </div>
+  </main>
   <!--==========================
     Footer
   ============================-->
@@ -142,16 +143,17 @@
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
   <!-- JavaScript Libraries -->
-  <script src="lib/jquery/jquery.min.js"></script>
-  <script src="lib/jquery/jquery-migrate.min.js"></script>
-  <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="lib/easing/easing.min.js"></script>
-  <script src="lib/superfish/hoverIntent.js"></script>
-  <script src="lib/superfish/superfish.min.js"></script>
-  <script src="lib/wow/wow.min.js"></script>
-  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-  <script src="lib/magnific-popup/magnific-popup.min.js"></script>
-  <script src="lib/sticky/sticky.js"></script>
+  <script src="{{ asset('lib/jquery/jquery.min.js')}}"></script>
+  <script src="{{ asset('lib/jquery/jquery-migrate.min.js')}}"></script>
+  <script src="{{ asset('lib/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{ asset('lib/bootstrap/js/bootstrap.min.js')}}"></script>
+  <script src="{{ asset('lib/easing/easing.min.js')}}"></script>
+  <script src="{{ asset('lib/superfish/hoverIntent.js')}}"></script>
+  <script src="{{ asset('lib/superfish/superfish.min.js')}}"></script>
+  <script src="{{ asset('lib/wow/wow.min.js')}}"></script>
+  <script src="{{ asset('lib/owlcarousel/owl.carousel.min.js')}}"></script>
+  <script src="{{ asset('lib/magnific-popup/magnific-popup.min.js')}}"></script>
+  <script src="{{ asset('lib/sticky/sticky.js')}}"></script>
 
   <script>
       $(document).ready(function(){
@@ -162,10 +164,10 @@
   <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8HeI8o-c1NppZA-92oYlXakhDPYR7XMY"></script> -->
 
   <!-- Contact Form JavaScript File -->
-  <script src="contactform/contactform.js"></script>
+  <script src="{{ asset('contactform/contactform.js')}}"></script>
 
   <!-- Template Main Javascript File -->
-  <script src="js/main.js"></script>
+  <script src="{{ asset('js/main.js')}}"></script>
 
   </body>
 </html>
